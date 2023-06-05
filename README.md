@@ -1,6 +1,8 @@
 # Semantic Search
 
-![demo gif](public/demo.gif)
+<p align="center">
+  <img src="public/demo.gif" alt="animated" />
+</p>
 
 Semantic search, leverages natural language processing and machine learning to understand the intent and context behind a search query. It considers the meaning, relationships, and concepts associated with the words we use, resulting in more precise and meaningful search results.
 
