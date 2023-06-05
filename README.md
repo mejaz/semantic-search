@@ -1,5 +1,7 @@
 # Semantic Search
 
+![demo gif](public/demo.gif)
+
 Semantic search, leverages natural language processing and machine learning to understand the intent and context behind a search query. It considers the meaning, relationships, and concepts associated with the words we use, resulting in more precise and meaningful search results.
 
 Traditional search engines rely on keyword matching, which often leads to irrelevant or inaccurate results.
