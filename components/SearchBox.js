@@ -6,9 +6,14 @@ export default function SearchBox({setHighlightIng}) {
 	const [results, setResults] = useState([])
 	const [q, setQ] = useState('')
 	const [loading, setLoading] = useState(false)
+	const [refine, setRefine] = useState(false)
 
 	const handleChange = (e) => {
 		setIngredient(e.target.value)
+	}
+
+	const toggleRefine = () => {
+		setRefine(prevState => !prevState)
 	}
 
 	const handleSubmit = async (e) => {
@@ -24,10 +29,10 @@ export default function SearchBox({setHighlightIng}) {
 
 		let response = await fetch('/api/search', {
 			method: 'POST',
-			body: JSON.stringify({query: ingredient}),
+			body: JSON.stringify({query: ingredient, refine}),
 			headers: {
 				'Content-Type': 'application/json'
-			}
+			},
 		})
 
 		if (response.ok) {
@@ -45,15 +50,23 @@ export default function SearchBox({setHighlightIng}) {
 
 	return (
 		<div>
-			<form className={'w-full flex space-x-2'} onSubmit={handleSubmit}>
-				<input onChange={handleChange} value={ingredient} type={'text'} placeholder={'Type any ingredient...'}
-							 className={'grow border border-purple-500 p-2 rounded-md'}/>
-				<button
-					disabled={loading}
-					className={'bg-purple-500 p-2 px-4 text-white rounded-md hover:bg-purple-600 disabled:bg-purple-300 disabled:cursor-not-allowed'}
-				>
-					Search
-				</button>
+			<form className={'w-full'} onSubmit={handleSubmit}>
+				<div className={"flex space-x-2"}>
+					<input onChange={handleChange} value={ingredient} type={'text'} placeholder={'Type any ingredient...'}
+								 className={'grow border border-purple-500 p-2 rounded-md'}/>
+					<button
+						type={'submit'}
+						disabled={loading}
+						className={'bg-purple-500 p-2 px-4 text-white rounded-md hover:bg-purple-600 disabled:bg-purple-300 disabled:cursor-not-allowed'}
+					>
+						Search
+					</button>
+				</div>
+				<div className={'space-x-2 mt-2'}>
+					<input className={'cursor-pointer'} type={'checkbox'} onChange={toggleRefine} checked={refine} name={'refine'} id={'refine'}/>
+					<label htmlFor={'refine'} className={'select-none cursor-pointer'}>Refine results</label>
+				</div>
+
 			</form>
 			<div className={'mt-4'}>
 				<div className={'border-b flex items-center'}>
