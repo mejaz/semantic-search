@@ -32,3 +32,5 @@ Traditional search engines rely on keyword matching, which often leads to irrele
 ## Contact
 
 mohdejazsiddiqui@gmail.com
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Y8Y618ZETK)
